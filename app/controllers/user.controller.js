@@ -15,10 +15,6 @@ exports.findOne = (req, res) => {
   
 };
 
-// find all published Users
-exports.findAllPublished = (req, res) => {
-  
-};
 
 // Update a User identified by the id in the request
 exports.update = (req, res) => {
@@ -75,16 +71,16 @@ exports.create = (req, res) => {
     });
   };
   
-  exports.findAllPublished = (req, res) => {
-    User.getAllPublished((err, data) => {
-      if (err)
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving Users."
-        });
-      else res.send(data);
-    });
-  };
+  // exports.findAllPublished = (req, res) => {
+  //   User.getAllPublished((err, data) => {
+  //     if (err)
+  //       res.status(500).send({
+  //         message:
+  //           err.message || "Some error occurred while retrieving Users."
+  //       });
+  //     else res.send(data);
+  //   });
+  // };
 
   exports.findOne = (req, res) => {
     User.findById(req.params.id, (err, data) => {

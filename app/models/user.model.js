@@ -1,4 +1,6 @@
 const sql = require("./db.js");
+//bcrypt module
+const {hash, compare, hashSync } = require(bcrypt);
 
 // constructor
 const User = function(user) {

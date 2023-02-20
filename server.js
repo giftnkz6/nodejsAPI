@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const {message} = require("./app/middleware/message")
 const app = express();
 
 var corsOptions = {
@@ -9,6 +9,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -16,9 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Gift application." });
+app.get("/", message, (req, res) => {
+  res.status(200).json({ message: "Welcome to Gift application." });
+  
 });
+
+
 
 require("./app/routes/product.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
